@@ -6,15 +6,15 @@ char *userInput();
 
 void main()
 {
-    printf("%d", countWords(userInput()));
+    printf("%s", "Write something: \n");
+    printf("%s %d", "Number of words: ", countWords(userInput()));
 }
 
 char *userInput()
 {
     char *words;
     char inputValue[MAX];
-    
-    printf("%s", "Write something: \n");
+
     fgets(inputValue, sizeof inputValue, stdin);
     words = inputValue;
 
@@ -25,7 +25,7 @@ int countWords(char value[])
 {
     int nr_of_words = 0;
     int i = 0;
-    
+
     while (value[i] != '\0')
     {
         if (value[i] == ' ')
