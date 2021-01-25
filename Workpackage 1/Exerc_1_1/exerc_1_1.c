@@ -1,49 +1,81 @@
+// Include section
 #include <stdio.h>
 
-//Code done by Simon Engström
+// Constant section
+void sort();
+int userInput();
 
-//Declaring our input() function
-void input();
+// Main program section
+
+/**
+ * This program accepts a number between 1-5, and prints a predifined string 
+ * depending on the number that was entered. If the user does not enter a number between 1-5
+ * the string "Stopped" will print.
+ * 
+ * 
+ * Purpose: Demonstration of Exerc_1_1
+ * DIT632
+ * 
+ * Author: Simon Engström, 2021
+ * 
+**/
+
 
 void main()
 {
-   input();
+
+   //the sort method uses the value returned from the userInput method.
+
+   sort(userInput());
 }
 
-void input()
+//method to read the input from the user
+
+int userInput()
 {
-   //Declaring a variable of type int
-   int inputValue;
 
-   //Prints "Enter a number between 1 and 5: " to the console
+   // variable declarations
+
+   int input; //variable to store user input
+
+   // program logic
+
    printf("Enter a number between 1 and 5: ");
+   scanf("%d", &input); //gets user input and stores it to the input variable
 
-   //Gets input from the user, "%d" means we want an integer, and we assign the value that the user inputs to our variable "inputValue"
-   scanf("%d", &inputValue);
+   return input; //returns the input variable
+}
 
-   //A switch case that takes our variable "inputValue" as expression, then checks if it matches any of the cases. If it does not match any of the cases
-   //it will go to the default case and print "Stopped"
-   switch (inputValue)
+//method to print a certain string depending on the value inserted
+
+void sort(int value)
+{
+
+  //a switchcase that use value as expression and checks for a number of cases. if the value corresponds with one
+  //of the cases it will print the number entered to the console and then run the sort method again. if the value does not correspond 
+  //with any of the cases, then "stopped" will be printed and the program stops.
+
+   switch (value)
    {
    case 1:
       printf("Entered 1 \n");
-      input();
+      sort(userInput());
       break;
    case 2:
       printf("Entered 2 \n");
-      input();
+      sort(userInput());
       break;
    case 3:
       printf("Entered 3 \n");
-      input();
+      sort(userInput());
       break;
    case 4:
       printf("Entered 4 \n");
-      input();
+      sort(userInput());
       break;
    case 5:
       printf("Entered 5 \n");
-      input();
+      sort(userInput());
       break;
    default:
       printf("Stopped \n");
