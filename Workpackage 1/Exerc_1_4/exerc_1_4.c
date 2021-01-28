@@ -1,3 +1,14 @@
+/*====================================
+File name : exerc_1_1.c
+Date : 2021 - 01 - 28
+Group nr 7
+Members that contribute to the solutions
+Mattias Ekdahl
+Member not present at demonstration time :
+---
+Demonstration code : [KF4E-N7V4-ZY7Q-U9AV]
+====================================== */
+
 // Include section
 #include <stdio.h>
 #include <stdlib.h>
