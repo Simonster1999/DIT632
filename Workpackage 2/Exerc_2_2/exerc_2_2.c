@@ -21,12 +21,12 @@ void main() {
     printf("\nThe value of the label array (address) is: %p", &array);
     printf("\nFirst integer in the array is (array[0]) : %d", array[0]);
     printf("\nThe size of an integer (number of bytes) is : %d", sizeof(array[0]));
-    printf("\nThe size of the whole array is : %d\n", sum(array, MAX));
+    printf("\nThe size of the whole array is : %d", sizeof(array));
+    printf("\nThe sum of the all values is : %d\n", sum(array, MAX));
 
     for(int i = 0; i < MAX; i++) {
         int* num = &array[i];
         printf("[%i] value: %d, double: %d\n", i, *num, *num * 2);
-        // printf("[%i] value: %d, double: %d\n", i, array[i], array[i] * 2);
     }
 
 }
