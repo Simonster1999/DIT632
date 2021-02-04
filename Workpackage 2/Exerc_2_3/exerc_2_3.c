@@ -24,54 +24,58 @@ int main(int argc, char* argv[])
 	// ./exerc_2_3.exe hello world		must be compiled before, .exe must exsist
 	// printf("%s", argv[1]);
 	// printf("%d", (int) argc);
-
-	cmp(argc, argv);
-	nocmp(argc, argv);
+	if (argc == 3) {
+		cmp(argv[1], argv[2]);
+		nocmp(argv[1], argv[2]);
+	} else {
+		printf("Must write excatly two strings");
+	}
+	
 }
 
 // compare strings using strcmp
-int cmp(int amount, char* input) {
+int cmp(char* input, char* input2) {
 	//char a[] = "Hello";
 	//char b[] = "Hiya";
 	// compare string a to b
-	if (amount == 3) {
-		int comparison = strcmp(input[1], input[2]);
-		// print this if strcmp returns 0
-		if (comparison == 0) {
-			printf("String a and string b are equal.\n");
-		}
-		// print this if strcmp returns -1 or 1
-		else {
-			printf("Amount of strings entered is not 2.\n");
-		}
+	int comparison = strcmp(input, input2);
+	// print this if strcmp returns 0
+	if (comparison == 0) {
+		printf("These strings are equal.\n");
+	}
+	// print this if strcmp returns -1 or 1
+	else {
+		printf("These strings are not equal.\n");
 	}
 }
 
 // compare strings without using strcmp
-int nocmp(int amount, char* input) {
+int nocmp(char* input, char* input2) {
 	//char a[] = "Hello";
 	//char b[] = "Hello";
-	int isequal;
+	int isequal = 1;
 	// loop through every letter of  the string
 	//for (int i = 0; i < (sizeof(input[0])); i++) {
 		// compare every corresponding letter in the other string to current index and set isequal to 1 if they are the same
-	if (amount == 3) {
-		if (input[0] == input[1]) {
-			isequal = 1;
+	if (sizeof(input) == sizeof(input2)) {
+		for (int i = 0; i < sizeof(input); i++) {
+			if (input[i] != input2[i]) {
+				isequal = 0;
+			}
+			// if they aren't the same, set isequal to 0 and break out of the loop
 		}
-		// if they aren't the same, set isequal to 0 and break out of the loop
-		else {
-			isequal = 0;
-		}
-		//}
-		// print this if isequal equals 1
-		if (isequal == 1) {
-			printf("String a and string b are equal.");
-		}
-		// print this if isequal equals any other value
-		else {
-			printf("Amount of strings entered is not 2.");
-		}
-
+	} else {
+		isequal = 0;
 	}
+	
+	// print this if isequal equals 1
+	if (isequal == 1) {
+		printf("These strings are equal.");
+	}
+	// print this if isequal equals any other value
+	else {
+		printf("These strings are not equal.");
+	}
+
+	
 }
