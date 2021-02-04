@@ -21,9 +21,13 @@ int nocmp();
 
 int main(int argc, char *argv[])
 {
-	if (sizeof(argv) == 2) {
-		cmp(argv);
-		nocmp(argv);
+	// ./exerc_2_3.exe hello world		must be compiled before, .exe must exsist
+	printf("%s", argv[1]);
+	//printf("%d", (int) argc);
+	if (argc == 3) {
+		//cmp(argv);
+		//nocmp(argv);
+		printf("%s", argv[2]);
 	}
 	else {
 		printf("The number of strings entered is not 2.");
