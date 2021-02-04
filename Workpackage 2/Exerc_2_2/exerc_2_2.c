@@ -54,12 +54,13 @@ void main() {
     printf("\nFirst integer in the array is (array[0]) : %d", array[0]);
     printf("\nThe size of an integer (number of bytes) is : %d", sizeof(array[0])); // size of first element
     printf("\nThe size of the whole array is : %d", sizeof(array));                 // size of array
-    printf("\nThe sum of the all values is : %d\n", sum(array, MAX));               // sum of array
+    printf("\nThe sum of the all values is : %d\n\n", sum(array, MAX));               // sum of array
 
     // prints each element and its double value
     for(int i = 0; i < MAX; i++) {
         int* num = &array[i];
-        printf("[%i] value: %d, double: %d\n", i, *num, *num * 2);
+        // unclear whether to double the value or to cast it to a double, therefore both are included
+        printf("[%i] value: %d, \tdoubled value: %d, \tdouble type: %f\n", i, *num, *num * 2, (double) *num);
     }
 
 }

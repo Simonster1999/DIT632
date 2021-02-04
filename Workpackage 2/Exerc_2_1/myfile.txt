@@ -1,1 +1,1 @@
-myExampleTextToCopy!Do not read this!
+My Text With Spaces! Do not read this!
