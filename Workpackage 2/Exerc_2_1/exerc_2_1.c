@@ -42,7 +42,7 @@ void main() {
 
     // get the string, either from console or separete file
     printf("Type the string to copy: ");
-    scanf("%20s", str);
+    fgets(str, MAX + 1, stdin);
     
     // copy the string using function from string.h
     strcpy(strCopy, str);
