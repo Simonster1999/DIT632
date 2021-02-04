@@ -10,27 +10,32 @@ int nocmp();
 
 /**
  * This program receives strings and checks whether they are equal or not.
- * 
- * 
+ *
+ *
  * Purpose: Demonstration of Exerc_2_3
  * DIT632
- * 
+ *
  * Author: Emil Gustafsson, 2021
- * 
+ *
 **/
 
-int main()
+int main(int argc, char *argv[])
 {
-	cmp();
-	nocmp();
+	if (sizeof(argv) == 2) {
+		cmp(argv);
+		nocmp(argv);
+	}
+	else {
+		printf("The number of strings entered is not 2.");
+	}
 }
 
 // compare strings using strcmp
-int cmp() {
-	char a[] = "Hello";
-	char b[] = "Hiya";
+int cmp(char *input) {
+	//char a[] = "Hello";
+	//char b[] = "Hiya";
 	// compare string a to b
-	int comparison = strcmp(a, b);
+	int comparison = strcmp(input[0], input[1]);
 	// print this if strcmp returns 0
 	if (comparison == 0) {
 		printf("String a and string b are equal.\n");
@@ -42,22 +47,21 @@ int cmp() {
 }
 
 // compare strings without using strcmp
-int nocmp() {
-	char a[] = "Hello";
-	char b[] = "Hello";
+int nocmp(char *input) {
+	//char a[] = "Hello";
+	//char b[] = "Hello";
 	int isequal;
 	// loop through every letter of  the string
-	for (int i = 0; i < (sizeof(a)); i++) {
+	//for (int i = 0; i < (sizeof(input[0])); i++) {
 		// compare every corresponding letter in the other string to current index and set isequal to 1 if they are the same
-		if (a[i] == b[i]) {
+		if (input[0] == input[1]) {
 			isequal = 1;
 		}
 		// if they aren't the same, set isequal to 0 and break out of the loop
 		else {
 			isequal = 0;
-			break;
 		}
-	}
+	//}
 	// print this if isequal equals 1
 	if (isequal == 1) {
 		printf("String a and string b are equal.");
