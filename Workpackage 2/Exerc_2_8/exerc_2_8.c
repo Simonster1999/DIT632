@@ -4,9 +4,11 @@ Date : 2021 - 02 - 04
 Group nr 7
 Members that contribute to the solutions
 Simon Engström
+Mattias Ekdahl
+Emil Gustafsson
 Member not present at demonstration time :
 ---
-Demonstration code : []
+Demonstration code : [FQ74-RF3M-MB8V-45W6]
 ====================================== */
  
 //include section

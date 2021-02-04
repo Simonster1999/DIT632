@@ -4,9 +4,11 @@ Date : 2021 - 02 - 04
 Group nr 7
 Members that contribute to the solutions
 Mattias Ekdahl
+Simon Engström
+Emil Gustafsson
 Member not present at demonstration time :
 ---
-Demonstration code : []
+Demonstration code : [FQ74-RF3M-MB8V-45W6]
 ====================================== */
 
 // Include section
@@ -42,6 +44,9 @@ void main() {
 
     // get the string, either from console or separete file
     printf("Type the string to copy: ");
+    
+    // reads MAX + 1 because otherwise the last index woyld contain null or end of file,
+    // this way we get MAX amount of readable chars from the user
     fgets(str, MAX + 1, stdin);
     
     // copy the string using function from string.h

@@ -1,3 +1,16 @@
+/*====================================
+File name : exerc_2_4.c
+Date : 2021 - 02 - 04
+Group nr 7
+Members that contribute to the solutions
+Emil Gustafsson
+Mattias Ekdahl
+Simon Engström
+Member not present at demonstration time :
+---
+Demonstration code : [FQ74-RF3M-MB8V-45W6]
+====================================== */
+
 // include section
 #include <stdio.h>
 #include <string.h>
@@ -29,7 +42,7 @@ int main()
 	int end = strlen(inputString) - 1;
 
 	// compare start and end
-	for (int i = 0; i < (sizeof(inputString)); i++) {
+	for (int i = 0; i < (strlen(inputString)); i++) {
 		// for every loop, increase start by 1 and decrease end by 1
 		if (inputString[start] != inputString[end]) {
 			// isPalindrome will be set to 0 when the loop finds a set of non-matching characters

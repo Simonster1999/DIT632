@@ -1,3 +1,16 @@
+/*====================================
+File name : exerc_2_3.c
+Date : 2021 - 02 - 04
+Group nr 7
+Members that contribute to the solutions
+Emil Gustafsson
+Mattias Ekdahl
+Simon Engström
+Member not present at demonstration time :
+---
+Demonstration code : [FQ74-RF3M-MB8V-45W6]
+====================================== */
+
 // include section
 #include <stdio.h>
 #include <string.h>
