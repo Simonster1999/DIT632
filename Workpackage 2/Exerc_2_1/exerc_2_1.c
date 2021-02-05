@@ -37,15 +37,15 @@ void copyString(char* target, char* origin);
 void main() {
     
     // variable declarations
-    char str[MAX];      // Original string
-    char strCopy[MAX];  // Copy of original string
+    char str[MAX];      // original string
+    char strCopy[MAX];  // copy of original string
 
     // program logic
 
     // get the string, either from console or separete file
     printf("Type the string to copy: ");
     
-    // reads MAX + 1 because otherwise the last index woyld contain null or end of file,
+    // reads MAX + 1 because otherwise the last index would contain null or end of file,
     // this way we get MAX amount of readable chars from the user
     fgets(str, MAX + 1, stdin);
     
@@ -53,7 +53,7 @@ void main() {
     strcpy(strCopy, str);
     printf("\nstrcpy: %s\n", strCopy);
 
-    // make the two strings unequal again, to show that section function works
+    // make the two strings unequal again, to show that second function works
     strCopy[0] = '\0';
 
     // copy string using own function
@@ -73,7 +73,7 @@ void copyString(char* target, char* origin) {
             // copies one char at a time
             *target = *origin;
 
-            // change index of pointers by one
+            // increase index of pointers by one
             origin++, target++;
         } else {
             break;

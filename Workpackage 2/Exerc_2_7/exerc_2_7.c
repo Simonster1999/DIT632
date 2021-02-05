@@ -16,7 +16,8 @@ Demonstration code : [FQ74-RF3M-MB8V-45W6]
 #include <stdlib.h>
 
 // Define section
-#define MAX 10      // defines the size of a person number
+#define MAX 10      // defines the size of a person number,
+                    // person number syntax: yymmddxxxc
 
 // Function prototype declaration
 void readPersnr(char* person);
@@ -59,7 +60,7 @@ void main() {
         }
 
         // check if the calculated control number matches that one provided
-        // converts char to int like for example '1' to 1
+        // converts char to int, like for example '1' to 1
         if (controlDigit(spn) == (int) spn[9] - 48) {
             printf("%s is a valid swedish person number", spn);
         }
@@ -86,12 +87,12 @@ int controlDigit(const char* persnr) {
     int spn[MAX],   // swedish person number as seperate numbers in an array
         mon,        // the two month integers combined
         day,        // the two day integers combined
-        sum = 0;    // the sum used by the Luhn-algorithm
+        sum = 0;    // the sum used for the Luhn-algorithm
 
     // loops through all chars pointed to by persnr and converts and stores them in spn
     for (int i = 0; i < MAX; i++) {
 
-        // checks that the char is a number (0-9)
+        // checks if the char is not a number (0-9), if so then exits
         if ((int) *persnr - 48 < 0 || (int) *persnr - 48 > 9) {
             exit(1);
         }
@@ -112,7 +113,7 @@ int controlDigit(const char* persnr) {
     // calculates the day number, same method as for months: 0 * 10 + 6 = 6, 3 * 10 + 0 = 30
     day = spn[4] * 10 + spn[5];
 
-    // check whether the month and day are withing the corect ranges
+    // check whether the month and day are withing the corect ranges, if not then exits
     if (mon > 0 && mon < 13) {
         // if Febuary
         if (mon == 2) {
@@ -144,13 +145,13 @@ int controlDigit(const char* persnr) {
 
     // implemtation of Luhn-algorithm
     // multiplies every other number with 2 or 1, starting with 2
-    // if the resulting interger is greater than 9 e.g. 10+
-    // the number should be split 17 -> 1 and 7
+    // if the resulting interger is greater than 9 e.g. 10 or more
+    // then the number should be split 17 -> 1 and 7
     // all numbers are then added together
     // subtracting 9 instead of splitting gives the same result:
     //      10 -> 1 + 0 == 10 - 9, 19 -> 1 + 9 == 19 - 9
-    // loops MAX - 1 times beacuse the last number, the control number,
-    // is not part of the equation, rather the supposed result, if the spn is valid
+    // loops MAX - 1 times beacuse the last number is the control number,
+    // which is not part of the equation, rather the supposed result, if the spn is valid
     for (int i = 0; i < MAX - 1; i++) {
         
         // statement is true every other iteration, initially true
@@ -166,21 +167,21 @@ int controlDigit(const char* persnr) {
             }
         }
         else {
-            // add number to sum
+            // add number to sum, do not have to multiply by 1
             sum += spn[i];
         }
     }
     
     // sum is then supposed to be removed from its closest higher tens,
     // i.e. if sum is 33 then take 40 - 33 and get 7
-    // dividing by ten and using the result does the same thing
+    // dividing by ten and using the rest does the same thing
     // 40 is supposed to give 0 for example
     // the returned value should be between 0 and 9
     if (sum % 10 == 0) {
         return 0;
     }
     else {
-        // if the sum % 10 is not 0, then remove the rest from ten. 40 - 33 == 10 - 3 etc
+        // if the sum % 10 is not 0, then remove the rest from 10. 40 - 33 == 10 - 3 etc
         return 10 - sum % 10;
     }
 }
