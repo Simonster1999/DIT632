@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     int nr = 0;
     REGTYPE *akt_post, *head = NULL;
     srand(time(0)); //   Random seed
-    //head = malloc(MAX * sizeof(struct q));
     head = random_list();
     akt_post = head;
     while (akt_post != NULL)
@@ -45,25 +44,31 @@ int main(int argc, char *argv[])
 
 REGTYPE* random_list(void){
 
-    REGTYPE records[MAX];
-    int nr,i=0;    
+    int nr, i = 0;    
     REGTYPE *top, *old, *item;
 
-    old = &records[0];
-    top = &records[0];
     for(i; i < MAX; i++) {
-        records[i].number = rand() % 101; // possible numbers: 0-100
 
-        item = &records[i];
-        old->next = item;
+        item = malloc(sizeof(REGTYPE));
+        item->number = rand() % 101; // possible numbers: 0-100
 
+        if (i == 0) {
+
+            top = item;
+            old = NULL;
+            
+        }
+        
         item->prev = old;
+        
+        if (old != NULL) {
+
+            old->next = item;
+        }
+
         old = item;
     }
     item->next = NULL;
-    top->prev = NULL;
-    //item->next = top;
-    //top->prev = old;
     return(top);
 }
 
