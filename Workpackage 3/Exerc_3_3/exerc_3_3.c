@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-//#### Konstanter #####
+//#### Constants #####
 #define MAX 5
 
 // ##### Typedefs ####
@@ -16,20 +16,22 @@ typedef struct q
 // ##### Funcion declarations #####
 REGTYPE *random_list(void);
 REGTYPE *add_first(REGTYPE *temp, int data);
+void print_list(REGTYPE* akt_post);
 
 //###### Main program #######
 int main(int argc, char *argv[])
 {
-    int nr = 0;
     REGTYPE *akt_post, *head = NULL;
     srand(time(0)); //   Random seed
     head = random_list();
-    akt_post = head;
-    while (akt_post != NULL)
-    {
-        printf("\n Post nr %d : %d", nr++, akt_post->number);
-        akt_post = akt_post->next;
-    }
+    print_list(head);
+
+    // add record first
+    head = add_first(head, rand() % 101);
+
+    // test add_first function, print updated list
+    print_list(head);
+
     // --- Free of allocated memory  ---
     while ((akt_post = head) != NULL)
     {
@@ -73,5 +75,24 @@ REGTYPE* random_list(void){
 }
 
 REGTYPE* add_first(REGTYPE* temp, int data){
-    // Adds a record first i list and set the field tal to data
+    // Adds a record first in list and set the field number to data
+    REGTYPE *rec = malloc(sizeof(REGTYPE));
+
+    rec->number = data;
+    rec->prev = NULL;
+    rec->next = temp;
+
+    temp->prev = rec;
+
+    return rec;
+}
+
+void print_list(REGTYPE* akt_post) {
+    int nr = 0;
+    while (akt_post != NULL)
+    {
+        printf("\n Post nr %d : %d", nr++, akt_post->number);
+        akt_post = akt_post->next;
+    }
+    printf("\n");
 }
