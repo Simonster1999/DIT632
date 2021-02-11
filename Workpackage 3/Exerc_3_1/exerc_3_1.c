@@ -10,8 +10,8 @@ typedef struct {
 } ROBOT;
 
 //function declaration
-void move(int *x, int *y, enum DIRECTION *d);
-void turn(enum DIRECTION *d);
+void move(int* x, int* y, enum DIRECTION* d);
+void turn(enum DIRECTION* d);
 
 //main program section
 void main() {
@@ -22,12 +22,26 @@ void main() {
 	char movement[20];
 
 	while (1) {
-		printf("\nPlease enter the robot's starting x position (0-99):");
+		printf("\nPlease enter the robot's starting x position (0-99): ");
 		scanf("%d", &rob.xpos);
-		printf("\nPlease enter the robot's starting y position (0-99):");
-		scanf("%d", &rob.ypos);
-		printf("\nPlease enter movement combination\n");
-		scanf("%20s", movement);
+		if (rob.xpos < 0 || rob.xpos > 99) {
+			printf("\nInvalid x position.");
+			continue;
+		}
+		else {
+			printf("\nPlease enter the robot's starting y position (0-99): ");
+			scanf("%d", &rob.ypos);
+			if (rob.ypos < 0 || rob.ypos > 99) {
+				printf("\nInvalid y position.");
+				continue;
+			}
+			else {
+				printf("\nPlease enter movement combination: ");
+				scanf("%20s", movement);
+
+			}
+
+		}
 
 		for (int i = 0; i < (strlen(movement)); i++) {
 			if (movement[i] == 'm' || movement[i] == 'M') {
@@ -46,22 +60,22 @@ void main() {
 	}
 }
 
-void move(int *x, int *y, enum DIRECTION *d) {
+void move(int* x, int* y, enum DIRECTION* d) {
 	if (*d == N) {
-		(*y)++;
+		if (*y < 99) (*y)++;
 	}
 	else if (*d == E) {
-		(*x)++;
+		if(*x < 99) (*x)++;
 	}
 	else if (*d == S) {
-		(*y)--;
+		if(*y > 0) (*y)--;
 	}
 	else if (*d == W) {
-		(*x)--;
+		if(*x > 0 ) (*x)--;
 	}
 }
 
-void turn(enum DIRECTION *d) {
+void turn(enum DIRECTION* d) {
 	if (*d == 0) {
 		*d = 1;
 	}
