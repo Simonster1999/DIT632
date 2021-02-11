@@ -9,8 +9,8 @@ void sort(int tab[], int size);
 //main program section
 void main() {
     int n = 13;
-    int test[] = {1,2,34,5,67,3,23,12,13,10};
-    int length = (sizeof(test)/sizeof(test[0]));
+    int test[] = { 1,2,34,5,67,3,23,12,13,10 };
+    int length = (sizeof(test) / sizeof(test[0]));
     int existsInTable = search_number(n, test, length);
     printf("Search results:");
     if (existsInTable == -1) {
@@ -18,10 +18,18 @@ void main() {
     }
     else {
         printf("\nThe number n first appears at the index %d in the array", existsInTable);
+        printf("\nThe array's content: \n");
+        for (int i = 0; i < length; i++) {
+            printf("%d ", test[i]);
+        }
     }
-    
+
     printf("\n\nSorting array...");
     sort(test, length);
+    printf("\nThe array's content after sorting: \n");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", test[i]);
+    }
 
     printf("\n\nSearch results after sorting array:");
     existsInTable = search_number(n, test, length);
@@ -30,6 +38,10 @@ void main() {
     }
     else {
         printf("\nThe number n first appears at the index %d in the array\n", existsInTable);
+        printf("\nThe array's content: \n");
+        for (int i = 0; i < length; i++) {
+            printf("%d ", test[i]);
+        }
     }
 }
 
