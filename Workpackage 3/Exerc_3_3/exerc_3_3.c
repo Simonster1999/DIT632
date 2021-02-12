@@ -1,6 +1,6 @@
 /*====================================
 File name : exerc_3_3.c
-Date : 2021 - 02 - 11
+Date : 2021 - 02 - 12
 Group nr 7
 Members that contribute to the solutions
 Mattias Ekdahl
@@ -33,8 +33,8 @@ REGTYPE *add_first(REGTYPE *temp, int data);
 void print_list(REGTYPE* cur_post);
 
 /**
- * This program demostraits how to create a doubly linked list of structs
- * using pointers and how to update and read integers inside structs.
+ * This program demostrate how to create a doubly linked list of structs
+ * using pointers and how to update and read integers inside said structs.
  * First the program creates the list of five records then it adds a new record
  * to the beginning of the list.
  * 
@@ -144,10 +144,10 @@ REGTYPE* add_first(REGTYPE* head, int data){
     return rec;
 }
 
-// itirates over and prints a linked list from its first record to last via pointers
+// iterates over and prints a linked list from its first record to last via pointers
 void print_list(REGTYPE* cur_post) {
     // code was moved to a seperate function from the main to avoid repetition 
-    //  due to needing to print multiple times
+    // due to needing to print multiple times
     int nr = 0;
     while (cur_post != NULL)
     {
