@@ -9,6 +9,7 @@ void main(int argc, char *argv[]) {
         
         unsigned char byte;
         int sum[5];
+        
         //atoi(argv[1]) -> a-Z == 0
         for (int i = 0; i < 5; i++) {
 
@@ -27,12 +28,12 @@ void main(int argc, char *argv[]) {
         if (sum[4] != 0 && sum[4] != 1) exit(1);
 
         // [128] [64 32 16] [8 4] [2] [1], bit grouped together
-        int a = sum[0] * 128 
+        // moving values to proper position in binary number then converted to decimal
+        byte = (sum[0] * 128 
                 + sum[1] * 16
                 + sum[2] * 4
                 + sum[3] * 2
-                + sum[4];
-        byte = a;
+                + sum[4]);
 
         // print as uppercase hexadecimal
         printf("%X", byte);
