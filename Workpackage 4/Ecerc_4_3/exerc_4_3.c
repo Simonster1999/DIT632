@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void f_delay(int);
 unsigned char random_inport( void);
