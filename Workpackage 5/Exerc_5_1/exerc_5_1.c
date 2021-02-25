@@ -31,13 +31,13 @@ const int COL3 = 5;
 const int COL4 = 4;
 
 // variable declarations
-char keynumber = 'X';   // most resent key
+char keynumber = 'X';   // most recent key
 bool keyhit = false;    // has a key been pressed or not
 
 // main program section
 
 /**
- * This program enables the use of a keypad using arduino usin interupts instead of polling.
+ * This program enables the use of a keypad using arduino using interrupts instead of polling.
  *
  *
  * Purpose: Demonstration of Exerc_5_1
@@ -55,7 +55,7 @@ void setup()
 
     Serial.begin(9600);
 
-    // creates a interupt which ckecks whether digital pin 2 is FALLING, aka going from 1 to 0
+    // creates a interrupt which checks whether digital pin 2 is FALLING, aka going from 1 to 0
   	attachInterrupt(digitalPinToInterrupt(2), keyboardirq, FALLING);
 }
 
@@ -108,7 +108,7 @@ char keyPress()
     int r4c4 = digitalRead(COL4);
   	digitalWrite(ROW4, HIGH);
   	
-    // sets all rows to LOW so the interupt can detect new key presses
+    // sets all rows to LOW so the interrupt can detect new key presses
   	digitalWrite(ROW1, LOW);
   	digitalWrite(ROW2, LOW);
   	digitalWrite(ROW3, LOW);
@@ -186,10 +186,10 @@ char keyPress()
     }
 }
 
-// interupt method, triggers whenever a key is pressed
+// interrupt method, triggers whenever a key is pressed
 void keyboardirq() {
   
-  // ckecks if a key has already been pressed, incase multiple interupts are triggered by switching
+  // checks if a key has already been pressed, incase multiple interrupts are triggered by switching
   // rows to HIGH and LOW again
   if(!keyhit){
 

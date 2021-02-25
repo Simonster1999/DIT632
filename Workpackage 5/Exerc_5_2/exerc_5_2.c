@@ -56,7 +56,7 @@ void setup()
 
     Serial.begin(9600);
 
-    // creates a interupt which ckecks whether digital pin 2 is FALLING, aka going from 1 to 0
+    // creates a interrupt which checks whether digital pin 2 is FALLING, aka going from 1 to 0
   	attachInterrupt(digitalPinToInterrupt(2), keyboardirq, FALLING);
 }
 
@@ -71,7 +71,7 @@ void loop()
     // turns mV to V
   	volt /= 1024.0;
   
-    // calculates the temperature in celcius based on the exercises formula
+    // calculates the temperature in celsius based on the exercises formula
     // 750mV = 25deg C, each 10mV is 1deg C
     // example: (0.75 - 0.5) * 100 = 25
     // example: (0.77 - 0.5) * 100 = 27
@@ -84,7 +84,7 @@ void loop()
       	Serial.print(" ");
       	Serial.println(celsius);
         
-        // sets keyhit to false, allows for another key to be detected and read by the interupt
+        // sets keyhit to false, allows for another key to be detected and read by the interrupt
       	keyhit = false;
     }
 
@@ -128,14 +128,14 @@ char keyPress()
     int r4c4 = digitalRead(COL4);
   	digitalWrite(ROW4, HIGH);
   	
-    // sets all rows to LOW so the interupt can detect new key presses
+    // sets all rows to LOW so the interrupt can detect new key presses
   	digitalWrite(ROW1, LOW);
   	digitalWrite(ROW2, LOW);
   	digitalWrite(ROW3, LOW);
   	digitalWrite(ROW4, LOW);
   
     // for each combination of rows and columns we check if a connection has been made, 
-    // and return the corrisponding number/letter
+    // and return the corresponding number/letter
     if (r1c1 == 0)
     {
         return '1';
@@ -206,10 +206,10 @@ char keyPress()
     }
 }
 
-// interupt method, triggers whenever a key is pressed
+// interrupt method, triggers whenever a key is pressed
 void keyboardirq() {
   
-  // ckecks if a key has already been pressed, incase multiple interupts are triggered by switching
+  // checks if a key has already been pressed, incase multiple interrupts are triggered by switching
   // rows to HIGH and LOW again
   if(!keyhit){
 
