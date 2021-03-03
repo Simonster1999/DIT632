@@ -1,0 +1,14 @@
+1.  It creates one thread.
+
+2.  Line 16 declares the thread ID "tid". 
+    line 17 creates the thread attribute data structure "attr".
+    Line 20 initializes attr.
+    Line 25 creates a new thread that calls the function "runner".
+    Line 26 makes the program wait until the thread is done rather than exit immediately after creating it.
+
+3.  No parameters are passed to runner. This is signified by the fourth argument "NULL" when calling pthread_create.
+
+4.  These variables are declared outside of any function, meaning they are global and can be accessed from anywhere in the program.
+
+5.  When omitting line 26, the program does not wait for the thread to finish, which results in it proceeding to attempt sorting the
+    numbers before the runner function has been able to generate any. 
