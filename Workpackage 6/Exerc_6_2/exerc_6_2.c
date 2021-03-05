@@ -1,7 +1,15 @@
-// Program for exercise 6.2alt in DIT632
-// Version 2020-02-12
-// File : sortandfind_20.c
-// **************************************
+/*====================================
+File name : exerc_6_2.c
+Date : 2021 - 03 - 05
+Group nr 7
+Members that contribute to the solutions
+Mattias Ekdahl
+Emil Gustafsson
+Simon Engström
+Member not present at demonstration time :
+---
+Demonstration code : [PZU6-9MDJ-TCWT-F4XY]
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC
@@ -11,38 +19,68 @@ int array[200];
 int max_value;
 int search;
 
+// create additional runners for each of the threads
 void* runner0(void* param);
 void* runner1(void* param);
 void* runner2(void* param);
 
+/**
+ * This program generates random numbers from 0 - 200, lets the user decide the maximum possible value for said numbers
+ * and then search for a particular number in the array
+ *
+ * Purpose: Demonstration of Exerc_6_2
+ * DIT632
+ *
+ * Author: Emil Gustafsson, 2021
+ *
+**/
+
 int main() {
 	time_t t;
+	// create IDs for each of the threads
 	pthread_t tid0;
 	pthread_t tid1;
 	pthread_t tid2;
-	pthread_attr_t attr;
+
+	// create attributes for each of the threads
+	pthread_attr_t attr0;
+	pthread_attr_t attr1;
+	pthread_attr_t attr2;
 
 	srand((unsigned)time(&t));
-	pthread_attr_init(&attr);
 
+	// initialize each of the attributes
+	pthread_attr_init(&attr0);
+	pthread_attr_init(&attr1);
+	pthread_attr_init(&attr2);
+
+	// user is prompted for max value and search value before the threads run
 	printf("Enter max value\n");
 	scanf("%d", &max_value);
 
 	printf("Enter value to find\n");
 	scanf("%d", &search);
 
-	pthread_create(&tid0, &attr, runner0, NULL);
+	/* the three threads are created and are each followed by a join in order to make sure that the 
+	threads finish their work before the main method executes the rest of its code. */
+	// each thread prints what the current step is
+
+	// first thread generates 200 random numbers
+	pthread_create(&tid0, &attr0, runner0, NULL);
 	pthread_join(tid0, NULL);
 
-	pthread_create(&tid1, &attr, runner1, NULL);
+	// second thread sorts the numbers in ascending order
+	pthread_create(&tid1, &attr1, runner1, NULL);
 	pthread_join(tid1, NULL);
 
-	pthread_create(&tid2, &attr, runner2, NULL);
+	// third thread searches for and finds the entered search value
+	pthread_create(&tid2, &attr2, runner2, NULL);
 	pthread_join(tid2, NULL);
 
 	return 0;
 }
 
+// generates random numbers and fills the array with them
 void* runner0(void* param) {
 	printf("Generating numbers.");
 	int c = 0, n = 0;
@@ -55,6 +93,7 @@ void* runner0(void* param) {
 	pthread_exit(0);
 }
 
+// sorts the array in ascending order
 void* runner1(void* param) {
 	printf("\nSorting numbers.");
 	int c, d, swap;
@@ -70,6 +109,7 @@ void* runner1(void* param) {
 	}
 }
 
+// finds the entered search value number within the array
 void* runner2(void* param) {
 	printf("\nFinding number.");
 	int first = 0;
@@ -80,6 +120,7 @@ void* runner2(void* param) {
 		printf("\n %d", array[n]);
 	}
 
+	// compares every value in the array to the entered search value, stops after the last index has been reached or if the entered value was found
 	while (first <= last) {
 		if (array[middle] < search)
 			first = middle + 1;
@@ -92,6 +133,7 @@ void* runner2(void* param) {
 
 		middle = (first + last) / 2;
 	}
+	// if the algorithm reaches the end of the array without having found the entered value, print this
 	if (first > last)
 		printf("\n Not found! %d is not present in the list.\n", search);
 }
